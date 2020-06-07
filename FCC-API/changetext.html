@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("getMessage").onclick = function() {
+                document.getElementsByClassName("message")[0].textContent = "Here is the message"
+            }
+        })
+    </script>
+</head>
+<body>
+    <p class="message"></p>
+    <p>
+        <button id="getMessage">Get Message</button>
+    </p>
+    
+</body>
+</html>
