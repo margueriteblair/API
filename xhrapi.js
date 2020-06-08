@@ -19,6 +19,6 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
         }
         xhr.open("GET", "https://api.github.com/users", true)
-        xhr.send();
+        xhr.send(); //in the console it will print out as an array of users, in the page it will print as a string
         };
 })
