@@ -13,12 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const jsonArrayVal = Object.values(json)
                 document.getElementById("dataOutput").innerHTML = json.name;
                 console.log(Object.entries(json))
-                // let html = "<ul>"
-                //     html += `<li>${json.rotation_period}</li>`
-                //     html += `<li>${json.orbital_period}</li>`
-                //     html += `<li>${json.diameter}</li>`
-                //     html += `<li>${json.climate}</li>`
-                // html = html + "</ul>"
                 let html = "<ul>"
                 for (let i = 0; i < jsonArrayKey.length; i++) {
                     html += `<li>${jsonArrayKey[i]}: ${jsonArrayVal[i]}</li>`
