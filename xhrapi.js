@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     const responseJSON = JSON.parse(this.responseText)
                     console.log(responseJSON)
                     document.getElementById("dataOutput").innerHTML = responseJSON[0].login;
-                    let html = "<ul>"
+                    let html = "<ul list-style-type:none>"
                     for (let i = 0; i < responseJSON.length; i++) {
                          html += `<li>${responseJSON[i].login}</li>`
                     }
