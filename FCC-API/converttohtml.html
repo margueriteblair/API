@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cat Photo Finder</h1>
+<p class="message box">
+  The message will go here
+</p>
+<p>
+  <button id="getMessage">
+    Get Message
+  </button>
+  <div id="message"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      document.getElementById('getMessage').onclick = function(){
+        const req = new XMLHttpRequest();
+        req.open("GET",'/json/cats.json',true);
+        req.send();
+        req.onload = function(){
+          const json = JSON.parse(req.responseText);
+          let html = "";
+          // Add your code below this line
+  json.forEach(function(val){
+    const keys = Object.keys(val);
+    html += `<div class="cat"`;
+    keys.forEach(function(key){
+      html += `<strong>${key}</strong>`
+    })
+    html += `</div><br>`
+    document.getElementById("message").innerHTML = html;
+  })
+  
+          // Add your code above this line
+          document.getElementsByClassName('message')[0].innerHTML = html;
+        };
+      };
+    });
+  </script>
+</p>
+</body>
+</html>
