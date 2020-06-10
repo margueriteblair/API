@@ -40,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     let jsonKeys = Object.keys(json)
                     console.log(jsonKeys)
                     console.log(jsonValues)
+                    let degreesF = ((jsonValues[3].temp)-273.15)*(9/5)+32
+                    console.log(degreesF)
+                    document.getElementById("currentWeather").innerText = `${jsonValues[11]} is ${degreesF} degrees Farenheit.`
                 } else if (this.status === 404) {
                     console.log("404 Error!")
                 }
