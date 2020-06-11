@@ -1,14 +1,64 @@
 document.getElementById("geolocation").addEventListener("click", geolocate);
-
+// document.getElementById("geolocation").addEventListener("click", )
 function geolocate() {
     if (window.navigator && window.navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(onGeolocateSuccess, onGeolocateError);
     }
 }
 
+// function getWeather() {
+//     const url = "http://api.openweathermap.org/data/2.5/weather?"
+//     const lateq = "lat="
+//     let latitudeURL = "";
+//     const longeq = "&lon="
+//     let longitudeURL = "";
+//     const appid = "&appid"
+//     let apiKey = "28b070462390d4739c7761be2c99d179"
+
+//     let combinedURL = url+lateq+latitudeURL+longeq+longitudeURL+appid+apiKey;
+
+//     let xhr = new XMLHttpRequest();
+//     xhr.open("GET", combinedURL, true);
+//     xhr.onload = function() {
+//         if (this.status === 200 && this.readyState === 4) {
+//             console.log(this.responseText)
+//             document.getElementById("weatherInformation").innerText = this.responseText;
+    
+//         } else if (this.status === 404) {
+//             console.log(`404 Error!`)
+//         }
+//     }
+//     xhr.send();
+// }
+
 function onGeolocateSuccess(coordinates) {
     const {latitude, longitude} = coordinates.coords;
     console.log(`Found coordinates: ${latitude}, ${longitude}`)
+    console.log(latitude)
+
+    const url = "http://api.openweathermap.org/data/2.5/weather?"
+    const lateq = "lat="
+    let latitudeURL = latitude
+    const longeq = "&lon="
+    let longitudeURL = longitude
+    const appid = "&appid="
+    let apiKey = "28b070462390d4739c7761be2c99d179"
+
+    let combinedURL = url+lateq+latitudeURL+longeq+longitudeURL+appid+apiKey;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", combinedURL, true);
+    xhr.onload = function() {
+        if (this.status === 200 && this.readyState === 4) {
+            console.log(this.responseText)
+            document.getElementById("weatherInformation").innerText = this.responseText;
+    
+        } else if (this.status === 404) {
+            console.log(`404 Error!`)
+        }
+    }
+    xhr.send();
+
 }
 
 function onGeolocateError(error) {
