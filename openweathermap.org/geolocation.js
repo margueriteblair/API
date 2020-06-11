@@ -27,7 +27,8 @@ function onGeolocateSuccess(coordinates) {
             console.log(this.responseText)
             let json = JSON.parse(this.responseText)
             console.log(json)
-            document.getElementById("weatherInformation").innerText = `${json.name} is currently ${json.main.temp} Kelvin`;
+            let degreesF = (((json.main.temp)-273.15)*(9/5)+32).toFixed(2)
+            document.getElementById("weatherInformation").innerText = `${json.name} is currently ${degreesF} F.`;
     
         } else if (this.status === 404) {
             console.log(`404 Error!`)
