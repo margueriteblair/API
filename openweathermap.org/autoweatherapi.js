@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // const appId = "&appid=";
     // const apiKey = "28b070462390d4739c7761be2c99d179";
 
+
     const city = '4930956';
 
     document.getElementById("button").addEventListener("click", getWeather);
