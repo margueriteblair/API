@@ -1,4 +1,4 @@
 
 
-url = `api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}`
+url = `api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${yourapikey}`
 
