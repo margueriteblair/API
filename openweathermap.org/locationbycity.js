@@ -8,7 +8,10 @@ document.getElementById("submit").addEventListener("click", () => {
     xhr.open("GET", url, true);
     xhr.onload = function() {
         if (this.status === 200 && this.readyState === 4) {
-            document.getElementById("response-text").innerHTML = this.responseText;
+            let jsonResponse = JSON.parse(this.responseText)
+            console.log(jsonResponse)
+            console.log(jsonResponse.weather[0].main)   
+            document.getElementById("response-text").innerHTML = jsonResponse.weather[0].main;
         }
     }
     xhr.send()
