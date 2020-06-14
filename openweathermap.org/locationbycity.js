@@ -10,8 +10,9 @@ document.getElementById("submit").addEventListener("click", () => {
         if (this.status === 200 && this.readyState === 4) {
             let jsonResponse = JSON.parse(this.responseText)
             console.log(jsonResponse)
-            console.log(jsonResponse.weather[0].main)   
-            document.getElementById("response-text").innerHTML = jsonResponse.weather[0].main;
+            console.log(jsonResponse.weather[0].main)
+            let degreesF = (((jsonResponse.main.temp)-273.15)*(9/5)+32).toFixed(2);
+            document.getElementById("response-text").innerHTML = `The weather in ${cityName} today ${jsonResponse.weather[0].main} and it is ${degreesF} F.`;
         }
     }
     xhr.send()
