@@ -1,5 +1,5 @@
 document.getElementById("button").addEventListener("click", () => {
-    let typesArray = ["triva", "math", "date", "year"]
+    let typesArray = ["trivia", "math", "date", "year"]
     // let numbersArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]
     let type = typesArray[Math.floor(Math.random()*typesArray.length)];
     // let number = numbersArray[Math.floor(Math.random()*numbersArray.length)];
