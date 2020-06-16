@@ -16,6 +16,9 @@ function success(position) {
     xhr.onload = function() {
         if (this.status === 200 && this.readyState === 4){
             console.log(url)
+            let jsonParseResult = JSON.parse(this.responseText)
+            console.log(jsonParseResult.results[6].formatted_address)
+            document.getElementById("output").innerHTML = jsonParseResult.results[6].formatted_address
         } else if (this.status === 404){
             console.log(`Error! 404.`)
         }
