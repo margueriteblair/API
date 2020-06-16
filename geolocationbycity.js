@@ -7,18 +7,20 @@ function geolocate() {
 function success(position) {
     let longitude = position.coords.longitude;
     let latitude = position.coords.latitude;
-    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${YOUR_API_KEY}`
+    let apiKey = "AIzaSyAIoZqMZwFMADKiEZTz78lfJbC3Q0rqWWA"
+    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`
     console.log(`${longitude}, ${latitude}`)
     console.log(position)
     let xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
     xhr.onload = function() {
         if (this.status === 200 && this.readyState === 4){
-            console.log()
+            console.log(url)
         } else if (this.status === 404){
             console.log(`Error! 404.`)
         }
     }
+    xhr.send();
 }
 
 function error(position) {
