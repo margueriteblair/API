@@ -17,10 +17,10 @@ function success(position) {
         if (this.status === 200 && this.readyState === 4){
             console.log(url)
             let jsonParseResult = JSON.parse(this.responseText)
-            console.log(jsonParseResult.results[6].formatted_address)
+            console.log(jsonParseResult.results[6].formatted_address) //check if this is standard across all locations;
             document.getElementById("output").innerHTML = jsonParseResult.results[6].formatted_address
         } else if (this.status === 404){
-            console.log(`Error! 404.`)
+            console.log(`Error! 404.`) //anything to do with the timestamp?
         }
     }
     xhr.send();
