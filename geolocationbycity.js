@@ -19,6 +19,17 @@ function success(position) {
             let jsonParseResult = JSON.parse(this.responseText)
             console.log(jsonParseResult.results[6].formatted_address) //check if this is standard across all locations;
             document.getElementById("output").innerHTML = jsonParseResult.results[6].formatted_address
+            let xhr2 = new XMLHttpRequest();
+            xhr2.open("GET", `https://serpapi.com/playground?q=${jsonParseResult.results[6].formatted_address}&tbm=isch&ijn=0`, true);
+            xhr2.onload = function() {
+                if (this.status === 200 && this.readyState === 4){
+                    console.log(this.responseText)
+                    document.getElementById("img").innerHTML = this.responseText;
+                } else if (this.status === 404) {
+                    console.log(`Error! 404 Status.`)
+                }
+            }
+            xhr2.send();
         } else if (this.status === 404){
             console.log(`Error! 404.`) //anything to do with the timestamp?
         }
