@@ -16,9 +16,10 @@ function success(position) {
     xhr.onload = function() {
         if (this.status === 200 && this.readyState === 4){
             let jsonParseResult = JSON.parse(this.responseText)
-            console.log(jsonParseResult.results[6].formatted_address) //check if this is standard across all locations;
-            document.getElementById("output").innerHTML = jsonParseResult.results[6].formatted_address
-            let location = jsonParseResult.results[6].formatted_address;
+            console.log(jsonParseResult.plus_code.compound_code)
+            // console.log(jsonParseResult.results[6].formatted_address) //check if this is standard across all locations;
+            document.getElementById("output").innerHTML = (jsonParseResult.plus_code.compound_code).slice(7)
+            let location = (jsonParseResult.plus_code.compound_code).slice(7);
             let apiKey2 = "388752b0-b1e7-11ea-8ea7-3dd0050eb327"
             let url2 = `https://app.zenserp.com/api/v2/search?apikey=${apiKey2}&q=${location}&tbm=isch&device=desktop&location=Manhattan,New%20York,United%20States`
             let xhr2 = new XMLHttpRequest();
