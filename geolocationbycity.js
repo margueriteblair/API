@@ -15,7 +15,6 @@ function success(position) {
     xhr.open("GET", url, true);
     xhr.onload = function() {
         if (this.status === 200 && this.readyState === 4){
-            console.log(url)
             let jsonParseResult = JSON.parse(this.responseText)
             console.log(jsonParseResult.results[6].formatted_address) //check if this is standard across all locations;
             document.getElementById("output").innerHTML = jsonParseResult.results[6].formatted_address
@@ -23,8 +22,23 @@ function success(position) {
             xhr2.open("GET", `https://serpapi.com/playground?q=${jsonParseResult.results[6].formatted_address}&tbm=isch&ijn=0`, true);
             xhr2.onload = function() {
                 if (this.status === 200 && this.readyState === 4){
-                    console.log(this.responseText)
-                    document.getElementById("img").innerHTML = this.responseText;
+                    // console.log(this.responseText)
+                    // console.log(JSON.parse(this.responseText))
+                    // document.getElementById("img").innerHTML = this.responseText;
+                    // 'use strict';
+                    // let https = require('https');
+                    // let subscriptionKey = "";
+                    // let host = 'api.cognitive.microsoft.com';
+                    // let path = '/bing/v7.0/images/search';
+                    // let term = `${jsonParseResult.results[6].formatted_address}`;
+
+                    // let request_params = {
+                    //     method: 'GET',
+                    //     hostname: host,
+                    //     path: path: {
+                    //         'Ocp-Apim-Subscription-Key': subscriptionKey,
+                    //     }s
+                    // };
                 } else if (this.status === 404) {
                     console.log(`Error! 404 Status.`)
                 }
@@ -41,5 +55,3 @@ function error(position) {
     console.warn(`help`)
 }
 
-// https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452
-// &location_type=ROOFTOP&result_type=street_address&key=YOUR_API_KEY
