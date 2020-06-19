@@ -25,15 +25,19 @@ function success(position) {
             xhr2.open("GET", url2, true);
             xhr2.onload = function() {
                 if (this.status === 200 && this.readyState === 4){
-                    console.log(JSON.parse(this.responseText))
-                    // document.getElementById("img").innerHTML = this.responseText;
+                    let imageObject = JSON.parse(this.responseText)
+                    console.log(imageObject.image_results[0].thumbnail)
+                    let img = document.createElement("img")
+                    img.id = "picture"
+                    img.src = imageObject.image_results[0].thumbnail;
+                    document.getElementById("img").appendChild(img)
                 } else if (this.status === 404) {
                     console.log(`Error! 404 Status.`)
                 }
             }
             xhr2.send();
         } else if (this.status === 404){
-            console.log(`Error! 404.`) //anything to do with the timestamp?
+            console.log(`Error! 404.`) 
         }
     }
     xhr.send();
